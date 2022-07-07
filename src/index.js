@@ -50,7 +50,7 @@ import member27_Gary from './images/Members/27th-Gary.png';
 
 /*-- component --*/
 import Header from './components/Header/Header';
-import Main from './components/Main/Main';
+import Home from './components/Main/Home';
 import Footer from './components/Footer/Footer';
 
 import SideBar from './components/Trigger/SideBar'
@@ -556,7 +556,7 @@ class App extends React.Component {
             <div>
                 <Header callback={ ()=>this.handleTheme() } navigation={ content[this.state.Lang].navigation } />
                 <SideBar navigation={ content[this.state.Lang].navigation }/>
-                <Main  
+                <Home  
                     // TextBackground
                     typingSequence={ typingSequence }
                     // About

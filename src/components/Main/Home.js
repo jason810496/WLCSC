@@ -6,11 +6,11 @@ import Advantage from "./Advantage/Advantage";
 import Course from "./Course/Course";
 import LinkedListBackground from "./LinkedListBackground/LinkedListBackground";
 
-const Main = ( props )=>{
+const Home = ( props )=>{
 
     // console.log( 'Main' , props );
     return(
-        <div className={'Main'}>
+        <div className={'Home'}>
             <TextBackground typingSequence={ props.typingSequence }/>
             <About about={ props.about } IntroImages={ props.IntroImages } />
             <Advantage advantage={props.advantage } />
@@ -21,4 +21,4 @@ const Main = ( props )=>{
     );
 }
 
-export default Main;
+export default Home;
