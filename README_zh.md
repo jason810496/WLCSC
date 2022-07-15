@@ -1,6 +1,22 @@
 <h4 align="center"><a href="https://github.com/jason810496/WLCSC/blob/main/README.md">English</a></h4>
 
 # 武陵資研網站
+
+- [武陵高中資訊研究社官方網站](#武陵高中資訊研究社官方網站)
+- [改善社網](#改善社網)
+- [開發測試 & 部署](#開發測試--部署)
+- [網站內容](#網站內容)
+- [App 架構](#app-架構)
+    - [目錄架構](#目錄架構)
+    - [主要元件](#主要元件)
+        - [App](#app)
+        - [HomePage](#homepage)
+        - [MembersPage](#memberpage)
+        - [其他基本元件](#其他基本元件)
+    - [Routing](#routing)
+    - [動畫](#動畫)
+
+
 ## 武陵高中資訊研究社官方網站
 
 一個用 [React](https://reactjs.org/) 寫的靜態網站
@@ -12,7 +28,6 @@
 - 主流:
     `React` 與 `Vue` 為目前最主流的前端開發框架，可以增加開發效率和維護性 
 
-<!-- Details of website  -->
 ## 改善社網
 
 **技能要求：**
@@ -33,6 +48,7 @@
 
 - [] 增加新的頁面（ Route ） 
     Eg: 可以增加關於課程的頁面，介紹更詳細的內容
+
 
 ## 開發測試 & 部署
 （ 以下指令都是在終端機執行 ）
@@ -72,9 +88,11 @@ Footer 中的站外連結都寫在 `SocialLinkList` 中 （ 約在`line 240` ）
 const typingSequence = ['WLCSC', 3000, 'Wu Ling',3000,'Computer Science',3000,'Algorithm',3000,'Cyber Security',3000,'Web Development',3000,''];
 ```
 
+
+
 ## App 架構
 
-**目錄架構：**
+### 目錄架構
 
 ```
 /src.
@@ -128,32 +146,10 @@ const typingSequence = ['WLCSC', 3000, 'Wu Ling',3000,'Computer Science',3000,'A
 - `index.css` :
     網頁 CSS 的檔案，目前還沒依照元件分寫
 
-**App 元件架構：**
-
-所有頁面的整體架構大概如下所示 ： 
-```
-App{
-    Header{
-
-    }
-    SideBar{
-    
-    }
-    Language{
-    
-    }
-    PageContent{
-
-    }
-    Footer{
-        
-    }
-}
-```
-
-### Components
+### 主要元件
 
 這邊列出最主要的幾個大元件
+
 
 #### App
 
@@ -209,7 +205,7 @@ class App extends React.Component {
 2. **切換語言**：
 
     可以注意到 `state` 中的 `Lang` 是在 `0` 與 `1` 做變換 ， 再搭配 `content` array（  存所有網頁內容的 array , `content[0]` 是英文內容 ， `content[1]` 是中文內容 ， 恰好可以搭配 `state.Lang` 做內容的切換 （ 並且 `state.Lang` 狀態會傳入其他更小的元件中，一層一層傳入 ）
- 
+
 #### HomePage
 社團網站首頁( 這邊是 App 最主要的內容 )
 
@@ -243,6 +239,7 @@ HomePage{
     在最下方有「社團成員」的超連結 ＆ Linked-List 動畫背景的區塊
 
 
+
 #### MemberPage
 成員頁面的架構就比首頁簡單許多
 
@@ -268,6 +265,7 @@ MembersPage{
 ```
 
 不過是將每屆的社團成員重複套入 `MembersCard` 元件中，並 render 到頁面上
+
 
 #### 其他基本元件 
 
@@ -324,6 +322,7 @@ Routing 規則同樣也定義在 `index.js` ( 被定義在 `App` 元件的 `rend
 `p5.js` 動畫原始碼連結如下：
 - [cyber BackGround](https://openprocessing.org/sketch/1605892)
 - [Linked List Background](https://openprocessing.org/sketch/1605812)
+
 
 ### Reference 
 
