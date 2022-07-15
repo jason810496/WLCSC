@@ -38,15 +38,15 @@
 - CSS ( 如果想要改網頁樣式的話 )
 
 **Todo：**
-- [] 完成 `PageNotFound` 元件
+- [ ] 完成 `PageNotFound` 元件
     目前 `PageNotFound`元件定義在`index.js`的`App`元件中
-- [] 整理 CSS
+- [ ] 整理 CSS
     目前所有的 CSS 都寫在通一個檔案 ，可以考慮寫成 Object Oriented CSS
 
-- [] 優化 RWD
+- [ ] 優化 RWD
     把 CSS breakpoint 改好一點
 
-- [] 增加新的頁面（ Route ） 
+- [ ] 增加新的頁面（ Route ） 
     Eg: 可以增加關於課程的頁面，介紹更詳細的內容
 
 
