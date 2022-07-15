@@ -74,14 +74,20 @@ npm run deploy
 網站的所有內容（包括圖片）都寫在 `index.js` 最上方型態為 `const` 的變數中 （ 所以要單純修改網站內容時，只需要修改最上方的變數內容即可，並且內容都是 `Dictionary` 格式，根據在網頁的相對區塊命名 ）
 
 **首頁：**
+
 首頁的內容都在 `content` array 中 ( 約在`line 70` )
 `content[0]`是英語內容，`content[1]`是中文內容（ 切換機制會在說明 `App` 元件時提到 ）
 
-**成員頁面**
+**成員頁面：**
+
 社團成員頁面都在 `MembersContent` array 中 ( 約在`line 280` )`MembersContent[0]`是英語內容，`MembersContent[1]`是中文內容（ 切換機制與`App` 元件相同 ）
+
 **頁尾：**
+
 Footer 中的站外連結都寫在 `SocialLinkList` 中 （ 約在`line 240` ）
+
 **打字機：**
+
 在首頁最上方的打字機效果內容在 `typingSequence` array 中，並且是一個字串與它的間隔時間 (ms) 為一組
 ```js
 // Typing effect in the beginning
@@ -227,15 +233,20 @@ HomePage{
 ```
 
 **元件說明：**
-- TextBackforund : 
+- **TextBackforund :**
+
     最上方有 cyber 感的動畫背景 & 有打字機效果的循環 Title 
-- About :
+- **About :**
+
     「關於我們」的區塊，包含右側三張有層次介紹的圖片
-- Advantage :
+- **Advantage :**
+
     四個並列的優勢卡
-- Course :
+- **Course :**
+
     課程資訊
-- LinkedListBackground :
+- **LinkedListBackground :**
+
     在最下方有「社團成員」的超連結 ＆ Linked-List 動畫背景的區塊
 
 
@@ -270,12 +281,16 @@ MembersPage{
 #### 其他基本元件 
 
 - **Header** : 
+
     包括左上的 Logo ， 電腦裝置才會顯示的中央導覽列 ，右上的主題切換
 - **SiderBar** : 
+
     在行動裝置才會顯示的側導覽列，位於 `src/components/Trigger/SideBar.js` 
 - **Language** : 
+
     區換語言 ， 位在 Header 左上 ， 但是沒有寫入 header 元件中，而是在 `src/components/Trigger/Language.js` 
 - **Footer** : 
+
     包括社團的其他連結和 copyright 
 
 ### Routing 
