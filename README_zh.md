@@ -5,7 +5,14 @@
 
 一個用 [React](https://reactjs.org/) 寫的靜態網站
 
-<!-- ## Details of website  -->
+**Why React ?**
+- 重複利用:
+    React 元件可以重複利用，如每個頁面的 Footer , Header ，或是成員頁面的 Profile cards 。 只需要寫出元件的模板，就可以將資料帶入並 render 在頁面上
+
+- 主流:
+    `React` 與 `Vue` 為目前最主流的前端開發框架，可以增加開發效率和維護性 
+
+<!-- Details of website  -->
 ## 改善社網
 
 **技能要求：**
@@ -13,6 +20,7 @@
 - basic js
 - React class component
 - React function component 
+- CSS ( 如果想要改網頁樣式的話 )
 
 **Todo：**
 - [] 完成 `PageNotFound` 元件
@@ -26,27 +34,101 @@
 - [] 增加新的頁面（ Route ） 
     Eg: 可以增加關於課程的頁面，介紹更詳細的內容
 
-## 開發測試 & 部屬
+## 開發測試 & 部署
+（ 以下指令都是在終端機執行 ）
 
-( 前提 : 必須位於 `<APP NAME>/src/` 這個目錄 )
+**前提：**
+安裝好 `npm` ， 並進入 `.../src/` 這個目錄執行 `npm install` 使令
 
+**指令：**
 在 local 啟動 App
 ```sh
 npm run start
 ```
-部屬當前 App
+部署當前 App 
 ```sh
 npm run deploy
 ```
-( 這會自動 build 當前的 App , 並部屬到 Github )
+( 這會自動 build 當前的 App , 並部屬到 Github ， 過約一分鐘就可以看到新版本上線了 )
 
 ## 網站內容
 
-網站的所有內容（包括圖片）都寫在 `index.js` 中
+網站的所有內容（包括圖片）都寫在 `index.js` 最上方型態為 `const` 的變數中 （ 所以要單純修改網站內容時，只需要修改最上方的變數內容即可，並且內容都是 `Dictionary` 格式，根據在網頁的相對區塊命名 ）
+
+**首頁：**
+首頁的內容都在 `content` array 中 ( 約在`line 70` )
+`content[0]`是英語內容，`content[1]`是中文內容（ 切換機制會在說明 `App` 元件時提到 ）
+
+**成員頁面**
+社團成員頁面都在 `MembersContent` array 中 ( 約在`line 280` )`MembersContent[0]`是英語內容，`MembersContent[1]`是中文內容（ 切換機制與`App` 元件相同 ）
+**頁尾：**
+Footer 中的站外連結都寫在 `SocialLinkList` 中 （ 約在`line 240` ）
+**打字機：**
+在首頁最上方的打字機效果內容在 `typingSequence` array 中，並且是一個字串與它的間隔時間 (ms) 為一組
+```js
+// Typing effect in the beginning
+const typingSequence = ['WLCSC', 3000, 'Wu Ling',3000,'Computer Science',3000,'Algorithm',3000,'Cyber Security',3000,'Web Development',3000,''];
+```
 
 ## App 架構
 
-App 的整體架構大概如下所示 ： 
+**目錄架構：**
+
+```
+/src.
+├── components
+│   ├── Footer
+│   │   └── Footer.js
+│   ├── Header
+│   │   └── Header.js
+│   ├── Main
+│   │   ├── About
+│   │   │   └── About.js
+│   │   ├── Advantage
+│   │   │   └── Advantage.js
+│   │   ├── Course
+│   │   │   └── Course.js
+│   │   ├── Home.js
+│   │   ├── LinkedListBackground
+│   │   │   └── LinkedListBackground.js
+│   │   ├── Members.js
+│   │   └── TextBackground
+│   │       └── TextBackground.js
+│   └── Trigger
+│       ├── Language.js
+│       └── SideBar.js
+├── images
+│   ├── algorithm.png
+│   ├── artificial-intelligence.png
+│   ├── Back.jpg
+│   ├── computer.gif
+│   ├── computer.png
+│   ├── data.png
+│   ├── encrypted.png
+│   ├── Group.jpg
+│   ├── hacker.gif
+│   ├── linux.png
+│   ├── Location.png
+│   ├── Logo.png
+│   ├── Members
+│   │   ├── 25th-xxx.jpg
+│   │   ├── 26th-xxx.png
+│   │   └── 27th-xxx.png
+│   ├── rocket.gif
+│   └── social-care.gif
+├── index.css
+└── index.js
+
+```
+- `index.js` : 
+    是 App 最上層的結構，負責將網站內容的大元件引入，同時也是存網站內容檔案。
+
+- `index.css` :
+    網頁 CSS 的檔案，目前還沒依照元件分寫
+
+**App 元件架構：**
+
+所有頁面的整體架構大概如下所示 ： 
 ```
 App{
     Header{
@@ -68,16 +150,25 @@ App{
 ```
 
 **基本元件**
-- Header : 包括左上的 Logo ， 電腦裝置才會顯示的中央導覽列 ，右上的主題接換 
-- SiderBar : 在行動裝置才會顯示的側導覽列
-- Language : 區換語言 ， 位在 Header 左上 ， 但是沒有寫入 header 元件中
-- Footer : 包括社團的其他連結和 copyright 
+- Header : 
+    包括左上的 Logo ， 電腦裝置才會顯示的中央導覽列 ，右上的主題接換
+- SiderBar : 
+    在行動裝置才會顯示的側導覽列
+- Language : 
+    區換語言 ， 位在 Header 左上 ， 但是沒有寫入 header 元件中
+- Footer : 
+    包括社團的其他連結和 copyright 
 
 **頁面元件**
-- PageContent :網頁中主要的內容
+- PageContent :網頁中主要的內容（ 也就是 `HomePage` 跟 `MembersPage` 主要有差異的地方 ）
+
 ### Components
 
+這邊列出最主要的幾個大元件
+
 #### App
+
+`App`元件是本網頁中控制**主題**、**語言**和負責 **Routing** 的元件，在修改架構前請先了解 `React Class Component`,`React State` 和 `React Route` 。
 
 `App` 元件架構如下 ： 
 ```js
@@ -130,12 +221,64 @@ class App extends React.Component {
 
     可以注意到 `state` 中的 `Lang` 是在 `0` 與 `1` 做變換 ， 再搭配 `content` array（  存所有網頁內容的 array , `content[0]` 是英文內容 ， `content[1]` 是中文內容 ， 恰好可以搭配 `state.Lang` 做內容的切換 （ 並且 `state.Lang` 狀態會傳入其他更小的元件中，一層一層傳入 ）
  
-#### MainPage
-社團網站首頁
-#### MemberPage
-成員頁面
-####
+#### HomePage
+社團網站首頁( 這邊是 App 最主要的內容 )
 
+主要元件位於`../src/components/Home.js`，並引入 `TextBackground.js` , `About.js` , `Advantage.js` , `Course.js` 和 `LinkedListBackground.js` 等元件
+
+`HomePage` 架構如下 ： 
+```
+HomePage{
+    Header{}
+    SideBar{}
+    Home{
+        TextBackground{}
+        About{}
+        Advantage{}
+        Course{}
+        LinkedListBackground{}
+    }
+}
+```
+
+**元件說明：**
+- TextBackforund : 
+    最上方有 cyber 感的動畫背景 & 有打字機效果的循環 Title 
+- About :
+    「關於我們」的區塊，包含右側三張有層次介紹的圖片
+- Advantage :
+    四個並列的優勢卡
+- Course :
+    課程資訊
+- LinkedListBackground :
+    在最下方有「社團成員」的超連結 ＆ Linked-List 動畫背景的區塊
+
+
+#### MemberPage
+成員頁面的架構就比首頁簡單許多
+
+主要元件位於`../src/components/Members.js`
+
+`MembersPage` 架構如下：
+```
+MembersPage{
+    Header{}
+    SideBar{}
+    Members{
+        25th{
+            Membercard{}
+            Membercard{} 
+            ...
+        }
+        26th{
+
+        }
+        ...
+    }
+}
+```
+
+不過是將每屆的社團成員重複套入 `MembersCard` 元件中 render 到頁面上
 
 ### Routing 
 
@@ -171,41 +314,7 @@ Routing 規則同樣也定義在 `index.js` ( 被定義在 `App` 元件的 `rend
 ```
 
 可以看不論是哪個 route ， `Language` 和 `Footer` 都會顯示在頁面中 （ 因為他們並沒有包在 `Router` 中 ）
-而`AppDomain/`(根目錄)會 render `App.HomePage` 這個元件，而`AppDomain/#/members`則是顯示成員頁面。而`<Route path='*' element={ < this.NotFoundPage/>}/>`這個 path 處理所有不合的 route （ 可以當作 `404 Page` ， 如用戶想連至 `AppDomain/#/cool` 這個 route 就會顯示 `NotFoundPage` 的內容 ，因為沒有 `cool` 這個 route ） 
-
-<a id="Header"></a>
-
-#### Header
-
-Header structure : 
-```
-Header{
-    Logo{
-    
-    }
-    Buttons{
-    
-    }
-    Chnage{
-    
-    }
-}
-```
-
-import `Header` components in `index.js`
-```javascript
-import Header from './components/Header/Header';
-```
-
-#### Logo
-the top-left Logo link in Header 
-
-#### Buttons
-the top navigation bar in Header 
-
-#### Change
-the theme toggle switch in Header 
-
+而`AppDomain/`(根目錄)會 render `App.HomePage` 這個元件，而`AppDomain/#/members`則是顯示成員頁面。而`<Route path='*' element={ < this.NotFoundPage/>}/>`這個 path 處理所有不合的 route （ 可以當作 `404 Page` ， 如用戶想連至 `AppDomain/#/cool` 這個 route 就會顯示 `NotFoundPage` 的內容 ，因為沒有 `cool` 這個 route ）  
 
 ### Reference 
 
