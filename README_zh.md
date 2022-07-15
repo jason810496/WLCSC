@@ -17,7 +17,7 @@
 
 **技能要求：**
 - git & github ( 會發 PR 即可 )
-- basic js
+- basic JS
 - React class component
 - React function component 
 - CSS ( 如果想要改網頁樣式的話 )
@@ -38,18 +38,20 @@
 （ 以下指令都是在終端機執行 ）
 
 **前提：**
-安裝好 `npm` ， 並進入 `.../src/` 這個目錄執行 `npm install` 使令
+
+ 安裝好 `npm` ， 並進入 `.../src/` 這個目錄執行 `npm install` 使令
 
 **指令：**
+
+
 在 local 啟動 App
 ```sh
 npm run start
 ```
-部署當前 App 
+部署當前 App ( 這會自動 build 當前的 App , 並部屬到 Github ， 過約一分鐘就可以看到新版本上線了 )
 ```sh
 npm run deploy
 ```
-( 這會自動 build 當前的 App , 並部屬到 Github ， 過約一分鐘就可以看到新版本上線了 )
 
 ## 網站內容
 
@@ -121,7 +123,7 @@ const typingSequence = ['WLCSC', 3000, 'Wu Ling',3000,'Computer Science',3000,'A
 
 ```
 - `index.js` : 
-    是 App 最上層的結構，負責將網站內容的大元件引入，同時也是存網站內容檔案。
+    是 App 最上層的結構，負責將網站內容的大元件引入，同時也是撰寫所有文字內容的檔案。
 
 - `index.css` :
     網頁 CSS 的檔案，目前還沒依照元件分寫
@@ -148,19 +150,6 @@ App{
     }
 }
 ```
-
-**基本元件**
-- Header : 
-    包括左上的 Logo ， 電腦裝置才會顯示的中央導覽列 ，右上的主題接換
-- SiderBar : 
-    在行動裝置才會顯示的側導覽列
-- Language : 
-    區換語言 ， 位在 Header 左上 ， 但是沒有寫入 header 元件中
-- Footer : 
-    包括社團的其他連結和 copyright 
-
-**頁面元件**
-- PageContent :網頁中主要的內容（ 也就是 `HomePage` 跟 `MembersPage` 主要有差異的地方 ）
 
 ### Components
 
@@ -214,10 +203,10 @@ class App extends React.Component {
 ```
 
 **功能：**
-1. 切換主題：
+1. **切換主題**：
 
     主要透過 `state` 中的 `IsDark` 來切換 ， 並搭配 CSS （ 透過將最外層的 div 的 className 設定為 `Dark` 或 `Light` ， 就可以透過 CSS 來達到切換主題的效果： 如 `.Dark .obj{ ... }` 或 `.Light .obj{ ... }` ）
-2. 切換語言：
+2. **切換語言**：
 
     可以注意到 `state` 中的 `Lang` 是在 `0` 與 `1` 做變換 ， 再搭配 `content` array（  存所有網頁內容的 array , `content[0]` 是英文內容 ， `content[1]` 是中文內容 ， 恰好可以搭配 `state.Lang` 做內容的切換 （ 並且 `state.Lang` 狀態會傳入其他更小的元件中，一層一層傳入 ）
  
@@ -278,7 +267,18 @@ MembersPage{
 }
 ```
 
-不過是將每屆的社團成員重複套入 `MembersCard` 元件中 render 到頁面上
+不過是將每屆的社團成員重複套入 `MembersCard` 元件中，並 render 到頁面上
+
+#### 其他基本元件 
+
+- **Header** : 
+    包括左上的 Logo ， 電腦裝置才會顯示的中央導覽列 ，右上的主題切換
+- **SiderBar** : 
+    在行動裝置才會顯示的側導覽列，位於 `src/components/Trigger/SideBar.js` 
+- **Language** : 
+    區換語言 ， 位在 Header 左上 ， 但是沒有寫入 header 元件中，而是在 `src/components/Trigger/Language.js` 
+- **Footer** : 
+    包括社團的其他連結和 copyright 
 
 ### Routing 
 
@@ -313,8 +313,17 @@ Routing 規則同樣也定義在 `index.js` ( 被定義在 `App` 元件的 `rend
             </div>
 ```
 
-可以看不論是哪個 route ， `Language` 和 `Footer` 都會顯示在頁面中 （ 因為他們並沒有包在 `Router` 中 ）
+可以看出不論是哪個 route ， `Language` 和 `Footer` 都會顯示在頁面中 （ 因為他們並沒有包在 `Router` 中 ）
 而`AppDomain/`(根目錄)會 render `App.HomePage` 這個元件，而`AppDomain/#/members`則是顯示成員頁面。而`<Route path='*' element={ < this.NotFoundPage/>}/>`這個 path 處理所有不合的 route （ 可以當作 `404 Page` ， 如用戶想連至 `AppDomain/#/cool` 這個 route 就會顯示 `NotFoundPage` 的內容 ，因為沒有 `cool` 這個 route ）  
+
+
+### 動畫 
+
+首頁最上方和最下方的動畫都是由 `p5.js` 這個套件寫成的， 並透過 `react-p5`使`p5.js` 動畫有辦法被當成 JSX 元件渲染在畫面上。
+
+`p5.js` 動畫原始碼連結如下：
+- [cyber BackGround](https://openprocessing.org/sketch/1605892)
+- [Linked List Background](https://openprocessing.org/sketch/1605812)
 
 ### Reference 
 
