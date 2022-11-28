@@ -4,10 +4,11 @@ import ReactDOM from 'react-dom/client';
 // routing package
 import {
     // StaticRouter as Router,
-    // BrowserRouter as Router,
-    HashRouter as Router,
-    Routes,
-    Route,
+    BrowserRouter as Router, Route, Routes
+    // HashRouter as Router,
+    // Routes,
+    // Switch,
+    // Route,
 } from 'react-router-dom';
 
 /*-- css ---*/
@@ -600,14 +601,11 @@ class App extends React.Component {
             <div className={ ( this.state.IsDark===1? DARK:LIGHT )+'App'}>
                 <Language callback={ ()=>this.handleLang() } />
 
-                <Router>
-                    <Routes>
+                <Router basename='WLCSC'>
+                    <Routes >
                         <Route path='*' element={ < this.NotFoundPage/>}/>
-
-                        <Route path="/">
-                            <Route index element={ <this.HomePage/> } />
-                            <Route path="members" element={ <this.MembersPage/> } />
-                        </Route>
+                        <Route path='/' element={ <this.HomePage/> } />
+                        <Route path="members" element={ <this.MembersPage/> } />
                         
                     </Routes>
                 </Router>
