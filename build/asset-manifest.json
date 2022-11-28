@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/WLCSC/static/css/main.88d000a1.css",
-    "main.js": "/WLCSC/static/js/main.c9544417.js",
+    "main.js": "/WLCSC/static/js/main.8970f93b.js",
     "static/media/25th-SF.png": "/WLCSC/static/media/25th-SF.7a7004f834795bd684fe.png",
     "static/media/25th-YoYo.png": "/WLCSC/static/media/25th-YoYo.22edee6c7bf6d3a9699a.png",
     "static/media/25th-CBC.png": "/WLCSC/static/media/25th-CBC.658d9ac0998b73b923e6.png",
@@ -21,10 +21,10 @@
     "static/media/encrypted.png": "/WLCSC/static/media/encrypted.7aadea64e6e9e6951098.png",
     "index.html": "/WLCSC/index.html",
     "main.88d000a1.css.map": "/WLCSC/static/css/main.88d000a1.css.map",
-    "main.c9544417.js.map": "/WLCSC/static/js/main.c9544417.js.map"
+    "main.8970f93b.js.map": "/WLCSC/static/js/main.8970f93b.js.map"
   },
   "entrypoints": [
     "static/css/main.88d000a1.css",
-    "static/js/main.c9544417.js"
+    "static/js/main.8970f93b.js"
   ]
 }
